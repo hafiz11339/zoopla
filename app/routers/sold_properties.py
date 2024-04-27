@@ -6,9 +6,9 @@ from schemas.properties import SoldProperties
 router = APIRouter()
 
 @router.post("", status_code=status.HTTP_200_OK)
-async def create_company(properties_data:SoldProperties):
+async def sold_properties(properties_data:SoldProperties):
     """
-    please add doc string here
+    This API is used to get the data of sold properties
     """
     
    
@@ -69,5 +69,4 @@ async def create_company(properties_data:SoldProperties):
                 }
 
     resp = requests.post(url=url, headers=headers, data=json.dumps(payload), verify=False, timeout=20)
-    print("-----",resp)
     return JSONResponse({"data":json.loads(resp.text)['data']}, status_code=status.HTTP_200_OK)
